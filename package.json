@@ -2,7 +2,7 @@
   "name": "qrcode_poc",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
     "start": "node server.js"
   },
