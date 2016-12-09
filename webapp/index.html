@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="jquery.qrcode-0.11.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -12,7 +12,7 @@
 
         function initiate() {
             if ("WebSocket" in window) {
-                var ws = new WebSocket("ws://127.0.0.1:8080/qrcode");
+                var ws = new WebSocket("wss://127.0.0.1:5000/qrcode");
                 ws.onopen = function() {
                     var hello = {
                         op: 'hello'
@@ -66,7 +66,7 @@
                 var str = "";
                 str += "<b>Your Name:</b>" + obj.name +"<br>";
                 str += "<b>Gender:</b>" + obj.gender + "<br>";
-                str += "<b>Photo:</b><img src='https://graph.facebook.com/me/picture?access_token=" + token + "' height='100px' width='100px'/>" + "<br>";
+                str += "<img src='https://graph.facebook.com/me/picture?access_token=" + token + "' height='100px' width='100px'/>" + "<br>";
                 $("#profile").html(str);
 
             }, "json").error(function(err) {
@@ -79,6 +79,7 @@
 
     <body>
         <br>
+        <h3 align="center"> QrCode:Proof of Concept <h3>
         <br>
         <div align="center">
             <div id="qrcode">

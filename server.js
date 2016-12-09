@@ -7,18 +7,20 @@ Object.size = function(obj) {
 };
 //var ip = process.env.OPENSHIFT_NODEJS_IP;
 
-var http = require("http");
+var http = require("https");
 var fs = require("fs");
 var path = require("path");
 
+var privateKey  = fs.readFileSync(__dirname+'/key.pem', 'utf8');
+var certificate = fs.readFileSync(__dirname+'/cert.pem', 'utf8');
+
 var server_ip_address  = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var port2      = 8081;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 5000;
 
 var checkMimeType = true;
+var credentials = {key: privateKey, cert: certificate};
 
-
-var server = http.createServer(function(request, response) {
+var server = http.createServer(credentials,function(request, response) {
 
   console.log("hello world server first line");
   if(request.method == "GET" ){
