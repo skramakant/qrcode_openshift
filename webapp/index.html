@@ -12,11 +12,11 @@
 
         function initiate() {
             if ("WebSocket" in window) {
-                var ws = new WebSocket("wss://127.0.0.1:5000/qrcode");
+                var ws = new WebSocket("wss://127.0.0.1:3001/qrcode");
                 ws.onopen = function() {
                     var hello = {
                         op: 'hello'
-                    };
+                3001
                     ws.send(JSON.stringify(hello));
 
                 };
